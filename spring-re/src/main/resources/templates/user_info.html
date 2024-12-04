@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 정보</title>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 50px;">
+        <!-- 카카오 로그인인 경우 -->
+        <h1 th:if="${userInfo.loginService == 'kakao'}">카카오 로그인 성공!</h1>
+        
+        <!-- 네이버 로그인인 경우 -->
+        <h1 th:if="${userInfo.loginService == 'naver'}">네이버 로그인 성공!</h1>
+
+        <!-- 다른 로그인 서비스인 경우 -->
+        <h1 th:if="${userInfo.loginService != 'kakao' and userInfo.loginService != 'naver'}">로그인 성공!</h1>
+
+        <h3>사용자 정보</h3>
+
+        <p><strong>ID:</strong> 
+            <span th:text="${userInfo.id != null ? userInfo.id : '없음'}"></span>
+        </p>
+
+        <p><strong>닉네임:</strong> 
+            <span th:text="${userInfo.profile.nickName != null ? userInfo.profile.nickName : '없음'}"></span>
+        </p>
+
+        <p><strong>이메일:</strong> 
+            <span th:text="${userInfo.email != null ? userInfo.email : '없음'}"></span>
+        </p>
+
+        <p><a th:href="@{boardList}">다시 로그인</a></p>
+    </div>
+</body>
+</html>
